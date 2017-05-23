@@ -16,6 +16,8 @@ install:
   - set TMPDIR=%APPVEYOR_BUILD_FOLDER%\tmp
   - perl -V
   - cpan App::cpanminus
+  # specify Devel::CheckLib now because this is a CONFIGURE_REQUIRES for author-side
+  - cpanm -n Devel::CheckLib
   - cpanm -q --showdeps --with-develop --with-suggests . | findstr /v "^perl\>" | cpanm -n
   - 'echo End intall at: & time /t'
 
